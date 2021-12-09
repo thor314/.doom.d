@@ -38,6 +38,10 @@
 (defvar tk/frame-transparency '(95 . 95))
 (set-frame-parameter nil 'alpha tk/frame-transparency)
 
+(setq super-save-auto-save-when-idle t
+    super-save-idle-duration 30
+    auto-save-default nil)
+
 ;;;;;;;;;
 ;; Org ;;
 ;;;;;;;;;
@@ -45,8 +49,6 @@
 (setq org-agenda-files '("~/org/agenda/")
       org-log-into-drawer t
       org-agenda-start-with-log-mode t
-      org-agenda-start-on-weekday t
-      org-agenda-loop-over-headlines-in-active-region t
       org-agenda-skip-deadline-if-done t
       org-agenda-restore-windows-after-quit t
       org-agenda-skip-deadline-prewarning-if-scheduled 'pre-scheduled
@@ -54,6 +56,34 @@
       org-journal-enable-agenda-integration t)
 (setq org-journal-dir "~/org/journal"
   org-journal-file-format "%Y%m%d.org")
+
+(setq org-agenda-custom-commands ; options - todo, tags, tags-todo
+      '(
+        ;;("y" agenda;;) ;; appointments: todo
+        ("c" "Crypto" tags-todo "CRYPTO")
+        ("e" "Emacs" tags-todo "EMACS")
+        ;; ex multi letter
+        ;;("g" . "HOME+Name tags searches")
+        ;;("gl" tags "+home+HABIT")
+        ;;("gp" tags "+home+EMACS")
+        ("h" "Habit" tags-todo "HABIT")
+        ("l" "Linux" tags-todo "LINUX")
+        ("m" "Math" tags-todo "MATH")
+        ("r" "Rust" tags-todo "RUST")
+        ("p" "Personal" tags-todo "PERS")
+        ("w" "Write" tags-todo "WRITE")
+        ("z" "Misc" tags-todo "MISC")
+        ;; demo of more powerful agenda template
+        ;; ("d" "Dashboard"
+        ;;   ;; bug: ==== bit is 5 chars too long for my screen
+        ;;   ((agenda "" ((org-deadline-warning-days 7)))
+        ;;     (todo "NEXT"
+        ;;       ((org-agenda-overriding-header "Next Tasks")))
+        ;;     (tags-todo "agenda/ACTIVE" ((org-agenda-overriding-header "Active Projects")))))
+        ))
+
+(setq org-roam-directory "~/org/roam")
+(setq org-roam-capture--file-name-default "<%Y-%m%-%d>-${slug}")
 
 (defun tk/org-setup-tags ()
   (setq org-tag-alist
@@ -77,6 +107,16 @@
   (require 'org-habit)
   (add-to-list 'org-modules 'org-habit)
   (setq org-habit-graph-column 60))
+
+(load! "org_templates.el")
+
+(setq which-key-idle-delay .25)
+(which-key-posframe-mode)
+(super-save-mode 1)
+(setq super-save-auto-save-when-idle t
+      super-save-idle-duration 30
+      auto-save-default nil)
+
 
 
 ;; Here are some additional functions/macros that could help you configure Doom:

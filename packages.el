@@ -5,7 +5,10 @@
 ;; on the command line, then restart Emacs for the changes to take effect -- or
 ;; use 'M-x doom/reload'.
 (package! git-link)
-(package! magit-todos)
+(use-package! magit-todos :after-call magit-status)
+(package! super-save)
+(package! which-key-posframe)
+(use-package! which-key-posframe)
 
 
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:

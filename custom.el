@@ -3,6 +3,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
  '(org-agenda-files
    '("/home/thor/org/agenda/agenda.org" "/home/thor/org/agenda/archive.org" "/home/thor/org/agenda/habits.org" "/home/thor/org/agenda/ideas.org" "/home/thor/org/agenda/todo.org" "/home/thor/org/journal/20211209.org")))
 (custom-set-faces
