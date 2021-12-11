@@ -5,11 +5,9 @@
 ;; on the command line, then restart Emacs for the changes to take effect -- or
 ;; use 'M-x doom/reload'.
 (package! git-link)
-(use-package! magit-todos :after-call magit-status)
+(use-package! git-link :commands git-link)
 (package! super-save)
-(package! which-key-posframe)
-(use-package! which-key-posframe)
-
+(package! tide) ;; typescript
 
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)

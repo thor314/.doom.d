@@ -1,5 +1,5 @@
 #+TITLE: Notes
 * Doom config Notes
-** TODO dec 9
-This is a todo to test magit-todos.
+** TODO dec 9 This is a todo to test magit-todos.
 I still have to fix variable pitch font, and figure out what it takes to install a package.
+** TODO Note to also check grammar check
