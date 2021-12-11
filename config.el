@@ -12,8 +12,8 @@
       user-mail-address "thorck@protonmail.com")
 (defvar tk/test 0) ; used for testing whether something worked
 ;; GNOME intercepts M-SPC so change this
-(setq doom-leader-alt-key "C-SPC"
-      doom-localleader-alt-key "C-SPC m")
+(setq doom-leader-alt-key "C-'"
+      doom-localleader-alt-key "C-' m")
 (setq doom-variable-pitch-font (font-spec :family "Cantarell" :size 14 :weight 'regular))
 (setq doom-big-font (font-spec :family "Fira Code" :size 16))
 (setq doom-font (font-spec :family "Fira Code" :size 14 :weight 'regular))
@@ -103,3 +103,12 @@
 (use-package! tide :after web-mode-hook)
 (add-hook! 'before-save-hook 'tide-format-before-save)
 (add-hook! 'typescript-mode-hook 'tide-setup)
+
+(undefine-key! minibuffer-local-map "C-v" "C-j")
+(map! :map 'minibuffer-local-map
+      :v "C-v" #'evil-scroll-page-down
+      :v "C-j" #'evil-scroll-page-down)
+
+(undefine-key! 'evil-insert-state-map "C-d")
+(map! :map 'evil-insert-state-map
+      :i "C-d" #'evil-delete-char)
