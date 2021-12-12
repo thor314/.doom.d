@@ -1,16 +1,10 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
-;; Remember, you do not need to run 'doom sync' after modifying this file!
-;; - `load!' for loading external *.el files relative to this one
-;; - `use-package!' for configuring packages
 ;; - `after!' for running code after a package has loaded
 ;; - `add-load-path!' for adding directories to the `load-path', relative to
 ;;   this file. Emacs searches the `load-path' when you load packages with
 ;;   `require' or `use-package'.
-;; - `map!' for binding new keys
-
 (setq user-full-name "Thor Kamphefner"
       user-mail-address "thorck@protonmail.com")
-(defvar tk/test 0) ; used for testing whether something worked
 ;; GNOME intercepts M-SPC so change this
 (setq doom-leader-alt-key "C-'"
       doom-localleader-alt-key "C-' m")
@@ -25,104 +19,19 @@
 (line-number-mode 0) ; clutter mode line
 (column-number-mode 0)
 (global-auto-revert-mode 1) ; revert buffers when file changes on disk; convenient.
+(global-diff-hl-mode)
 (setq global-auto-revert-non-file-buffers t
   auto-revert-verbose nil)
 (global-visual-line-mode) ; wrap long lines
 ;; (setq tab-width 2)
-
-(setq org-directory "~/org/"
-      org-agenda-files '("~/org/agenda/")
-      org-log-into-drawer t
-      org-agenda-start-with-log-mode t
-      org-agenda-skip-deadline-if-done t
-      org-agenda-restore-windows-after-quit t
-      org-agenda-skip-deadline-prewarning-if-scheduled 'pre-scheduled
-      org-agenda-todo-ignore-deadlines 'far
-      org-journal-enable-agenda-integration t
-      org-journal-dir "~/org/journal"
-      org-journal-file-format "%Y%m%d.org")
-
-(setq org-agenda-custom-commands ; options - todo, tags, tags-todo
-      '(
-        ;;("y" agenda;;) ;; appointments: todo
-        ("c" "Crypto" tags-todo "CRYPTO")
-        ("e" "Emacs" tags-todo "EMACS")
-        ;; ex multi letter
-        ;;("g" . "HOME+Name tags searches")
-        ;;("gl" tags "+home+HABIT")
-        ;;("gp" tags "+home+EMACS")
-        ("h" "Habit" tags-todo "HABIT")
-        ("l" "Linux" tags-todo "LINUX")
-        ("m" "Math" tags-todo "MATH")
-        ("r" "Rust" tags-todo "RUST")
-        ("p" "Personal" tags-todo "PERS")
-        ("w" "Write" tags-todo "WRITE")
-        ("z" "Misc" tags-todo "MISC")
-        ;; demo of more powerful agenda template
-        ;; ("d" "Dashboard"
-        ;;   ;; bug: ==== bit is 5 chars too long for my screen
-        ;;   ((agenda "" ((org-deadline-warning-days 7)))
-        ;;     (todo "NEXT"
-        ;;       ((org-agenda-overriding-header "Next Tasks")))
-        ;;     (tags-todo "agenda/ACTIVE" ((org-agenda-overriding-header "Active Projects")))))
-        ))
-
-(setq org-roam-directory "~/org/roam"
-      org-roam-capture--file-name-default "<%Y-%m%-%d>-${slug}")
-
-(defun tk/org-setup-tags ()
-  (setq org-tag-alist
-    '((:startgroup)
-       ;; Put mutually exclusive tags here
-       (:endgroup)
-       ("CRYPTO" . ?c)
-       ("EMACS" . ?e)
-       ("HABIT" . ?h)
-       ("LINUX" . ?l)
-       ("MATH" . ?m)
-       ("NOTE" . ?n)
-       ("PERS" . ?p)
-       ("RUST" . ?r)
-       ("WRITE" . ?w)
-       ("MISC" . ?z))))
-
-(add-hook! org-mode
-  (variable-pitch-mode 1)
-  (tk/org-setup-tags)
-  (require 'org-habit)
-  (add-to-list 'org-modules 'org-habit)
-  (setq org-habit-graph-column 60))
-;;(load! "org_templates.el")
-
 (setq which-key-idle-delay .25)
 (super-save-mode 1)
 (setq super-save-auto-save-when-idle t
       super-save-idle-duration 5
-      ;; TODO I still dunno how to write emacs lisp
-      ;;super-save-hook-triggers (append 'super-save-hook-triggers 'doom-switch-window-hook)
       auto-save-default nil)
+(setq super-save-hook-triggers (append super-save-hook-triggers '(doom-switch-window-hook)))
 
-(use-package! tide :after web-mode-hook)
-(add-hook! 'before-save-hook 'tide-format-before-save)
-(add-hook! 'typescript-mode-hook 'tide-setup)
-
-(undefine-key! minibuffer-local-map "C-v" "C-j")
-(map! :map 'minibuffer-local-map
-      :vm "C-v" #'evil-scroll-page-down
-      :vm "C-j" #'evil-scroll-page-down)
-
-(undefine-key! evil-insert-state-map "C-d" "C-t" "C-T")
-(map! :map 'evil-insert-state-map
-      :in "C-t" #'transpose-chars
-      :in "C-T" #'transpose-sexps
-      :in "C-d" #'evil-delete-char)
-
-;; evil will screw with ya, we must screw back
-(remove-hook 'doom-first-input-hook #'evil-snipe-mode)
-(map! :after evil
-      :nom "s" #'evil-avy-goto-char
-      :nom "S" #'evil-avy-goto-word-1
-      :n "t" #'transpose-chars
-      :n "T" #'transpose-sexps
-      :n "w" #'evil-window-next
-      :n "W" #'+evil/next-frame)
+(load! "org.el")
+(load! "programming.el")
+(load! "keymaps.el")
+;;(load! "org_templates.el")
