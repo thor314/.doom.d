@@ -98,6 +98,8 @@
 (super-save-mode 1)
 (setq super-save-auto-save-when-idle t
       super-save-idle-duration 5
+      ;; TODO I still dunno how to write emacs lisp
+      ;;super-save-hook-triggers (append 'super-save-hook-triggers 'doom-switch-window-hook)
       auto-save-default nil)
 
 (use-package! tide :after web-mode-hook)
@@ -106,9 +108,21 @@
 
 (undefine-key! minibuffer-local-map "C-v" "C-j")
 (map! :map 'minibuffer-local-map
-      :v "C-v" #'evil-scroll-page-down
-      :v "C-j" #'evil-scroll-page-down)
+      :vm "C-v" #'evil-scroll-page-down
+      :vm "C-j" #'evil-scroll-page-down)
 
-(undefine-key! 'evil-insert-state-map "C-d")
+(undefine-key! evil-insert-state-map "C-d" "C-t" "C-T")
 (map! :map 'evil-insert-state-map
-      :i "C-d" #'evil-delete-char)
+      :in "C-t" #'transpose-chars
+      :in "C-T" #'transpose-sexps
+      :in "C-d" #'evil-delete-char)
+
+;; evil will screw with ya, we must screw back
+(remove-hook 'doom-first-input-hook #'evil-snipe-mode)
+(map! :after evil
+      :nom "s" #'evil-avy-goto-char
+      :nom "S" #'evil-avy-goto-word-1
+      :n "t" #'transpose-chars
+      :n "T" #'transpose-sexps
+      :n "w" #'evil-window-next
+      :n "W" #'+evil/next-frame)

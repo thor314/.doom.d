@@ -2,4 +2,22 @@
 * Doom config Notes
 ** TODO dec 9 This is a todo to test magit-todos.
 I still have to fix variable pitch font, and figure out what it takes to install a package.
-** TODO Note to also check grammar check
+** DONE Note to also check grammar check
+** DONE Unsetting t and T:
+Resolution: run a couple tests with the map! macro, and discover :after evil works pretty well.
+
+I'm trying to unset the `t` and `T` keys. I look them up: `SPC h k t`, which returns:
+```
+Key Bindings
+evil-snipe-override-local-mode-map <motion-state> t
+evil-snipe-override-mode-map <motion-state> t
+```
+So I tried the following:
+```
+(undefine-key! evil-snipe-override-local-mode-map "t" "T")
+(undefine-key! evil-snipe-override-mode-map "t" "T")
+(map! :map 'evil-normal-state-map
+      :n "t" #'transpose-chars
+      :n "T" #'transpose-sexps)
+```
+and `M-x doom/reload`, but `t` and `T` are still bound. What else do I do?
