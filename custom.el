@@ -6,7 +6,7 @@
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
  '(org-agenda-files
-   '("/home/thor/org/agenda/agenda.org" "/home/thor/org/agenda/archive.org" "/home/thor/org/agenda/habits.org" "/home/thor/org/agenda/ideas.org" "/home/thor/org/agenda/todo.org" "/home/thor/org/journal/20211211.org")))
+   '("/home/thor/org/agenda/agenda.org" "/home/thor/org/agenda/archive.org" "/home/thor/org/agenda/habits.org" "/home/thor/org/agenda/ideas.org" "/home/thor/org/agenda/todo.org" "/home/thor/org/journal/20211212.org")))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

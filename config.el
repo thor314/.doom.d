@@ -20,6 +20,7 @@
 (column-number-mode 0)
 (global-auto-revert-mode 1) ; revert buffers when file changes on disk; convenient.
 (global-diff-hl-mode)
+(abbrev-mode)
 (setq global-auto-revert-non-file-buffers t
   auto-revert-verbose nil)
 (global-visual-line-mode) ; wrap long lines
