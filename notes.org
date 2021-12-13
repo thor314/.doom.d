@@ -1,5 +1,23 @@
 #+TITLE: Notes
 * Doom config Notes
+** Telega config notes
+[[https://github.com/zevlg/telega.el][Telega]] - telegram client
+installation guide
+verify all dependencies, or expect to discover them in the cmake step: [[https://zevlg.github.io/telega.el/][Telega Manual (v0.7.018)]]
+#+begin_src sh
+cd ~/.doom.d && git clone https://github.com/tdlib/td.git
+cd ~/.doom.d/td
+mkdir build && cd build
+# this will reveal missing dependencies
+cmake ../
+# use as many cores as available, takes a couple mins
+make -j4
+sudo make install
+# M-x telega-server build
+# M-x telega
+# cd ~/.doom.d && mv td tmp
+#+end_src
+
 ** TODO dec 9 This is a todo to test magit-todos.
 I still have to fix variable pitch font, and figure out what it takes to install a package.
 ** DONE Note to also check grammar check

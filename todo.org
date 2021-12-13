@@ -1,0 +1,4 @@
+* Inbox
+** TODO update org capture templates: use variable expansion
+
+[[file:~/.doom.d/org_templates.el::;;; org_templates.el -*- lexical-binding: t; -*-]]
