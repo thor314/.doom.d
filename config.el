@@ -43,6 +43,8 @@
   ;;telega-completing-read-function #'ivy-completing-read
   ;;telega-msg-rainbow-title nil
   telega-chat-fill-column 75)
+;;(setq writegood-weasel-words (remove "very" writegood-weasel-words))
+
 
 (load! "hacks.el")
 (load! "org.el")

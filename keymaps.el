@@ -7,9 +7,10 @@
 ;;; - 1. Enter desired mode, query the variable evil-state
 ;;; - 2. Try setting up the map. Note to use `:mode' for major-modes
 ;;;   and `:map' for minor-modes.
-;;; - 3. `gr' or `doom/reload'. If the keymap is not as expected:
-;;;   it is likely being overwritten by some feature. Try to determine
-;;;   the feature, and add :after `feature' to the map.
+;;; - 3. `gr' that line, or `SPC m e e'.  `doom/reload'. If the keymap
+;;;   is not as expected:
+;;;   It is likely being overwritten by some feature. Try to determine
+;;;   the feature, and add :after `feature' to the map. Restart Emacs.
 ;;; - 4. If that fails, determine what map is setting the key and use
 ;;;   the `undefine-key' macro to unset the key.
 ;;; - 5. If all else fails, try restarting. I haven't yet figured out
@@ -36,6 +37,8 @@
 ;; evil will screw with ya, we must screw back
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
 (map! :after evil
+      :nm "_" #'tk/prev-end-line
+      :nm "0" #'evil-next-line-1-first-non-blank
       :nom "s" #'evil-avy-goto-char
       :nom "S" #'evil-avy-goto-word-1
       ;;:nom "." #'

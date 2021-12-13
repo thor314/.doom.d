@@ -1,6 +1,11 @@
 ;;; hacks.el -*- lexical-binding: t; -*-
 ;;; mah hacky lil frens
 
+(defun tk/prev-end-line ()
+  (interactive)
+  (forward-line -1)
+  (evil-end-of-line))
+
 (defun tk/split-window-horizontally ()
   (interactive)
   (split-window-horizontally)
