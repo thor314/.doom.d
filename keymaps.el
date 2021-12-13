@@ -1,12 +1,34 @@
 ;;; keymaps.el -*- lexical-binding: t; -*-
+;;; Philosophy:
+;;; C-<key> should be used for commonly used commands, across all modes
+;;; C-S-<key> and M-<key> should do similar actions
+;;; Generally prefer leader keybinds when not in editing-mode
+;;; Notes on setting up keybinds: keybinding is tricky. Workflow:
+;;; - 1. Enter desired mode, query the variable evil-state
+;;; - 2. Try setting up the map. Note to use `:mode' for major-modes
+;;;   and `:map' for minor-modes.
+;;; - 3. `gr' or `doom/reload'. If the keymap is not as expected:
+;;;   it is likely being overwritten by some feature. Try to determine
+;;;   the feature, and add :after `feature' to the map.
+;;; - 4. If that fails, determine what map is setting the key and use
+;;;   the `undefine-key' macro to unset the key.
+;;; - 5. If all else fails, try restarting. I haven't yet figured out
+;;;   how to remap keys that have been "remapped", eg "p" and "u" in
+;;;   `helpful-mode'. My work around was to just choose another key.
 
 (undefine-key! minibuffer-local-map "C-v" "C-j")
-(map! :map 'minibuffer-local-map
-      :vm "C-v" #'evil-scroll-page-down
-      :vm "C-j" #'evil-scroll-page-down)
+(map! :map minibuffer-local-map
+      :m "C-v" #'evil-scroll-page-down
+      :m "C-j" #'evil-scroll-page-down)
 
-(undefine-key! evil-insert-state-map "C-d" "C-t" "C-T")
-(map! :map 'evil-insert-state-map
+(map! :mode helpful-mode ;;:after evil-normal
+ :m "n" #'evil-scroll-page-down
+ :m "-" #'evil-scroll-page-up
+ :m "C-v" #'evil-scroll-page-down
+ :m "C-j" #'evil-scroll-page-down)
+
+(undefine-key! evil-insert-state-map "C-d" "C-t" "C-T" "C-.")
+(map! :map evil-insert-state-map
       :in "C-t" #'transpose-chars
       :in "C-T" #'transpose-sexps
       :in "C-d" #'evil-delete-char)
@@ -16,7 +38,12 @@
 (map! :after evil
       :nom "s" #'evil-avy-goto-char
       :nom "S" #'evil-avy-goto-word-1
+      ;;:nom "." #'
+      ;; :nom ">" #'
+      ;; :nom "<" #'
       :n "t" #'transpose-chars
       :n "T" #'transpose-sexps
       :n "w" #'evil-window-next
-      :n "W" #'+evil/next-frame)
+      :n "W" #'+evil/next-frame
+      :inom "C-w" #'tk/split-window-horizontally
+      :inom "C-S-w" #'delete-other-windows)

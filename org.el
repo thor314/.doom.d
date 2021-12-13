@@ -56,6 +56,7 @@
         ("MISC" . ?z)))
 
 (add-hook! org-mode
+  (setq writegood-passive-voice-irregulars '())
   (variable-pitch-mode 1)
   (require 'org-habit)
   (add-to-list 'org-modules 'org-habit)

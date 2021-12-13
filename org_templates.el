@@ -1,28 +1,27 @@
 ;;; org_templates.el -*- lexical-binding: t; -*-
 (setq org-capture-templates
   '(
-     ;; the following two sections might be better served by some
-     ;; integration with projectile, but I couldn't find a feature
-     ;; implementation, so the following creates an entry in the project
-     ;; root directory for creating notes or todos.
+    ("t" "Personal todo" entry
+     (file+headline +org-capture-todo-file "Inbox")
+     "* %?\n%i\n%a" :prepend t)
+    ("n" "Personal notes" entry
+     (file+headline +org-capture-notes-file "Inbox")
+     "* %u %?\n%i\n%a" :prepend t)
+    ("p" "Templates for projects")
+    ("pt" "Project-local todo" entry
+     (file+headline +org-capture-project-todo-file "Inbox")
+     "* TODO %?\n%i\n%a" :prepend t)
+    ("pn" "Project-local notes" entry
+     (file+headline +org-capture-project-notes-file "Inbox")
+     "* %U %?\n%i\n%a" :prepend t)
+    ("pc" "Project-local changelog" entry
+     (file+headline +org-capture-project-changelog-file "Unreleased")
+     "* %U %?\n%i\n%a" :prepend t)
+    ("o" "Centralized templates for projects")
+    ("ot" "Project todo" entry #'+org-capture-central-project-todo-file "* TODO %?\n %i\n %a" :heading "Tasks" :prepend nil)
+    ("on" "Project notes" entry #'+org-capture-central-project-notes-file "* %U %?\n %i\n %a" :heading "Notes" :prepend t)
+    ("oc" "Project changelog" entry #'+org-capture-central-project-changelog-file "* %U %?\n %i\n %a" :heading "Changelog" :prepend t)
 
-     ;; Use this format to create todos in major projects
-     ("t" "Notes files in various directories")
-     ("te" "Emacs todo" entry (file+headline "~/.emacs.d/todo.org" "Todos")
-       "** TODO %u: %? \n" :prepend t)
-     ("to" "Org todo" entry (file+headline "~/org/todo.org" "Todos")
-       "*** TODO %u: %? \n" :prepend t)
-
-     ;; Use this format to create quicknotes in projects
-     ("n" "Notes files in various directories")
-     ("ne" "Emacs usage note" entry (file+headline "~/.emacs.d/notes.org" "Notes")
-       "* Note from %u: %? :NOTE:\n" :prepend t)
-     ("no" "Org usage note" entry (file+headline "~/org/notes.org" "Notes")
-       "* Note from %u: %? :NOTE:\n" :prepend t)
-     ("na" "Advent of Code note" entry (file+headline "~/py/play/advent/notes.org" "Notes")
-       "* Note from %u: %? :NOTE:\n" :prepend t)
-
-     ;; Store todos in file agenda/todo.org
      ("c" "Crypto" entry (file+headline "~/org/agenda/todo.org" "Crypto")
        "* TODO \t %? :CRYPTO:\nAdded: %u" :prepend t)
      ("e" "Emacs" entry (file+headline "~/org/agenda/todo.org" "Emacs")
@@ -31,7 +30,7 @@
        "* TODO \t %? :LINUX:\nAdded: %u" :prepend t)
      ("m" "Math" entry (file+headline "~/org/agenda/todo.org" "Math")
        "* TODO \t %? :MATH:\nAdded: %u" :prepend t)
-     ("p" "Personal" entry (file+headline "~/org/agenda/todo.org" "Pers")
+     ("P" "Personal" entry (file+headline "~/org/agenda/todo.org" "Pers")
        "* TODO \t %? :PERS:\nAdded: %u" :prepend t)
      ("r" "Rust" entry (file+headline "~/org/agenda/todo.org" "Rust")
        "* TODO \t %? :RUST:\nAdded: %u" :prepend t)
@@ -51,13 +50,13 @@
      ("hy" "Yearly Habit" entry (file+headline "~/org/agenda/habits.org" "Yearly Habits")
        "* TODO \t %? :HABIT:YEARLY:\nSCHEDULED: %^t ++1y\n:PROPERTIES:\n:STYLE: habit\n:END:\nAdded: %u" :prepend t)
      ;; Misc templates
-     ("P" "Project idea" entry (file+headline "~/org/agenda/ideas.org" "Projects")
-       "* \t %? :IDEA:PROJECT:\nAdded: %u\n" :prepend t)
      ("I" "Idea" entry (file+headline "~/org/agenda/ideas.org" "Ideas")
        "* \t %? :IDEA:\nAdded: %u\n" :prepend t)
      ("W" "Want list" entry (file+headline "~/org/agenda/ideas.org" "Wants")
        "* \t %? :WANT:\nAdded: %u\n" :prepend t)
      ))
+
+
   (setq org-roam-capture-templates
     '(
        ("c" "concept" plain "%?" ;; random thoughts, not used much
@@ -82,6 +81,7 @@
   :END:
   ,#+filetags: :project:\n#+title: ${slug}\n* Setup\n** Expected duration\n** OKRs \n* Milestone 1 review\n* Postmortem \n** Discussion \n** Links\n** Time taken: \n** Next project: ")
          :unnarrowed t)
+
        ("p" "paper" plain "%?" ;; papers
          :if-new (file+head "lit/paper/%<%Y-%m-%d>-${slug}.org"
                    ":PROPERTIES:
@@ -105,4 +105,4 @@
          :if-new (file+head "review/year/%<%Y-%m-%d>-year_review.org"
                    "#+title: Year Review %<%Y-%m-%d> \n#+filetags: :year_review:\n* Year In Review\n** Big vibes\n** Free Write\n** Theme for Year:\n** Review of Predictions \n** PPRESH check-in\n*** Professional - \n*** Projects - \n*** Romantic - \n*** Emotional - \n*** Social - \n*** Phys Health - \n*** Attn Health - \n** Review of Crypto Finances\n")
          :unnarrowed t)
-       ))
+))
