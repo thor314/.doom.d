@@ -39,3 +39,36 @@ So I tried the following:
       :n "T" #'transpose-sexps)
 ```
 and `M-x doom/reload`, but `t` and `T` are still bound. What else do I do?
+* Inbox
+** [2021-12-13 Mon 21:42] Notes from installing pass, the cmd line passwd manager
+:PROPERTIES:
+:ID:       60683684-f87d-445e-b686-8e760158d062
+:END:
+Easy!
+1. Install pass https://www.passwordstore.org/
+2. set up directory:
+#+begin_src sh
+gpg --list-keys #copy the last 8 chars from my gpg key
+pass init "last-8-chars"
+pass git init
+#+end_src
+3. migrate passwords from firefox:
+#+begin_src sh
+cd ~/play
+hub clone unode/firefox_decrypt
+cd firefox_deccrypt
+python3 firefox_decrypt.py --format pass
+pass ls
+#+end_src
+4. set up browser compatibility with the local password store
+   install pass_ff, a firefox extension for managing pass https://addons.mozilla.org/en-US/firefox/addon/passff/
+https://github.com/passff/passff#readme
+install the host app
+#+begin_src sh
+curl -sSL github.com/passff/passff-host/releases/latest/download/install_host_app.sh | bash -s -- firefox
+#+end_src
+5. set up emacs integration:
+   include pass https://github.com/NicolasPetton/pass
+   M-x pass
+6. todo: try using with firefox and emacs for awhile
+[[orgit:~/.doom.d/][~/.doom.d/ (magit-status)]]
