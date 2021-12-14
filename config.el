@@ -20,6 +20,8 @@
 (line-number-mode 0) ; clutter mode line
 (column-number-mode 0)
 (global-auto-revert-mode 1) ; revert buffers when file changes on disk; convenient.
+(display-time-mode 1)
+(setq display-time-load-average-threshold .80) ;; don't show unless system load is high
 (global-diff-hl-mode)
   (setq abbrev-file-name
         "~/.emacs.d/.local/etc/.abbrev_defs.el")
@@ -43,8 +45,7 @@
   ;;telega-completing-read-function #'ivy-completing-read
   ;;telega-msg-rainbow-title nil
   telega-chat-fill-column 75)
-;;(setq writegood-weasel-words (remove "very" writegood-weasel-words))
-
+(setq writegood-weasel-words (remove "very" writegood-weasel-words))
 
 (load! "hacks.el")
 (load! "org.el")
