@@ -53,4 +53,4 @@
 (load! "org_templates.el")
 
 (tk/keys)
-(use-package! stumpwm-mode)
+(use-package! stumpwm-mode :defer-incrementally t)

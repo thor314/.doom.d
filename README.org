@@ -1,0 +1,16 @@
+#+TITLE: Oh Doom, My Doom
+#+DATE:    December 15, 2021
+#+SINCE:   December 2, 2021
+#+STARTUP: inlineimages nofold
+
+* Description
+This is my doom config. To use it:
+#+begin_src shell
+cd
+git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
+~/.emacs.d/bin/doom install
+git clone https://github.com/thor314/.doom.d
+doom sync
+doom doctor # this last will inform of missing system dependencies
+#+end_src
+
