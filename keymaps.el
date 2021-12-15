@@ -28,20 +28,28 @@
  :m "C-v" #'evil-scroll-page-down
  :m "C-j" #'evil-scroll-page-down)
 
-(undefine-key! evil-insert-state-map "C-d" "C-t" "C-T" "C-.")
-(map! :map evil-insert-state-map
-      :in "C-t" #'transpose-chars
-      :in "C-T" #'transpose-sexps
-      :in "C-d" #'evil-delete-char)
+(undefine-key! evil-insert-state-map "C-d" "C-t" "C-T" "C-." "C-p" "C-P" "M-p" "C-n")
+(map!
+ :i "C-p" #'evil-previous-line
+ :i "C-n" #'evil-next-line
+ :i "C-v" #'evil-paste-after
+ :i "M-v" #'evil-paste-pop
+ :i "C-t" #'transpose-chars
+ :i "C-T" #'transpose-sexps
+ :i "C-d" #'evil-delete-char)
 
 ;; evil will screw with ya, we must screw back
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
 (map! :after evil
+      :n "SPC e" #'eshell
+      :n "SPC E" #'project-eshell
+      :n "SPC q C-l" #'tk/logout
+      :n "SPC 1" #'tk/keys
       :nm "_" #'tk/prev-end-line
       :nm "0" #'evil-next-line-1-first-non-blank
       :nom "s" #'evil-avy-goto-char
       :nom "S" #'evil-avy-goto-word-1
-      ;;:nom "." #'
+      ;;:nom "." )#'
       ;; :nom ">" #'
       ;; :nom "<" #'
       :n "t" #'transpose-chars
