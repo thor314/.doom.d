@@ -45,10 +45,12 @@
   ;;telega-completing-read-function #'ivy-completing-read
   ;;telega-msg-rainbow-title nil
   telega-chat-fill-column 75)
-(setq writegood-weasel-words (remove "very" writegood-weasel-words))
 
 (load! "hacks.el")
 (load! "org.el")
 (load! "programming.el")
 (load! "keymaps.el")
 (load! "org_templates.el")
+
+(tk/keys)
+(use-package! stumpwm-mode)

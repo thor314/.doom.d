@@ -81,7 +81,8 @@
        :checkers
        syntax              ; tasing you for every semicolon you forget
        (spell +everywhere) ; tasing you for misspelling misspelling
-       grammar           ; tasing grammar mistake every you make
+       ;; the following is more often annoying than correct
+       ;; grammar           ; tasing grammar mistake every you make
 
        :tools
        ;;ansible

@@ -11,6 +11,8 @@
 (package! super-save)
 (package! tide) ;; typescript
 (package! telega)
+(package! stumpwm-mode)
+
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)
 

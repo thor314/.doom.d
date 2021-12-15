@@ -22,4 +22,8 @@
          (system-time-locale "us_US"))
     (insert (format-time-string format))))
 
-;; (insert-date 4)
+(defun tk/keys () (interactive)
+       (shell-command "setxkbmap dvorak -option ctrl:swapcaps"))
+(defun tk/logout () (interactive)
+       (if (y-or-n-p "log out? ")
+       (shell-command "pkill -KILL -u $USERNAME")))
