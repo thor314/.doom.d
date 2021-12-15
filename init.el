@@ -80,7 +80,8 @@
 
        :checkers
        syntax              ; tasing you for every semicolon you forget
-       (spell +everywhere) ; tasing you for misspelling misspelling
+       ;; had to change nil to en in .emacs.d/local/etc/ispell/pws
+       (spell +aspell +everywhere) ; tasing you for misspelling misspelling
        ;; the following is more often annoying than correct
        ;; grammar           ; tasing grammar mistake every you make
 
