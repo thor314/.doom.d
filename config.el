@@ -12,11 +12,17 @@
 (setq doom-big-font (font-spec :family "Fira Code" :size 16))
 (setq doom-font (font-spec :family "Fira Code" :size 14 :weight 'regular))
 ;; outrun-electric, sourcerer, and rouge, laserwave, spacegrey, moonlight are faves
-(setq doom-theme 'doom-sourcerer)
+(setq doom-theme 'doom-outrun-electric)
 (setq doom-modeline-enable-word-count t)
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
-(defvar tk/frame-transparency '(93 . 93))
-(set-frame-parameter nil 'alpha tk/frame-transparency)
+(defvar tk/frame-transparency '(93 . 80))
+;; make-frame before/after hooks weren't getting the job done, so pulling out advice
+(defun tk/transparency ()
+  (dolist (frame (frame-list))
+    (set-frame-parameter frame 'alpha tk/frame-transparency)))
+(tk/transparency)
+(advice-add 'make-frame :after #'tk/transparency)
+
 (line-number-mode 0) ; clutter mode line
 (column-number-mode 0)
 (global-auto-revert-mode 1) ; revert buffers when file changes on disk; convenient.
