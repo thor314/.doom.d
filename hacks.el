@@ -27,3 +27,17 @@
 (defun tk/logout () (interactive)
        (if (y-or-n-p "log out? ")
        (shell-command "pkill -KILL -u $USERNAME")))
+(defun tk/append-package! (package)
+  "Append a package to my packages.el file"
+  (interactive "s")
+  (save-excursion
+    (with-temp-buffer
+      (insert-file-contents "~/.doom.d/packages.el")
+      (goto-char (point-max))
+      (insert (format "(package! %s)" package))
+      (write-file "~/.doom.d/packages.el"))
+    (with-temp-buffer
+      (insert-file-contents "~/.doom.d/config.el")
+      (goto-char (point-max))
+      (insert (format "(use-package! %s)" package))
+      (write-file "~/.doom.d/config.el"))))
