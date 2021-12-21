@@ -12,3 +12,7 @@
 (package! tide) ;; typescript
 (package! telega)
 (package! stumpwm-mode)
+;; bug upstream, include these
+(package! ghub)
+(package! with-editor)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

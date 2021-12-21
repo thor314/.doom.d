@@ -11,16 +11,11 @@
   (split-window-horizontally)
   (consult-buffer))
 
-(defun insert-date (prefix)
+(defun insert-date ()
   "Insert the current date. With prefix-argument, use ISO format. With
   two prefix arguments, write out the day and month name."
-  (interactive "p")
-  (let ((format
-          (cond
-            ((not prefix) "%Y-%m-%d")
-            ((equal prefix '(4)) "%A, %d %B %Y")))
-         (system-time-locale "us_US"))
-    (insert (format-time-string format))))
+  (interactive)
+  (insert (format-time-string "%Y-%m-%d")))
 
 (defun tk/keys () (interactive)
        (shell-command "setxkbmap dvorak -option ctrl:swapcaps"))
