@@ -55,8 +55,12 @@
         ("WRITE" . ?w)
         ("MISC" . ?z)))
 
+;; Annoyingly, it would appear that the doom return function is an anonymous closure, not evil-org-return. TODO.
+(advice-add 'org-return :after #'org-latex-preview)
+(advice-add 'evil-org-return :after #'org-latex-preview)
+(map! :map org-mode-map
+      :i "RET" #'evil-org-return)
 (add-hook! org-mode
-  (setq writegood-passive-voice-irregulars '())
   (variable-pitch-mode 1)
   (require 'org-habit)
   (add-to-list 'org-modules 'org-habit)

@@ -15,9 +15,11 @@
 (setq doom-theme 'doom-outrun-electric)
 (setq doom-modeline-enable-word-count t)
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
+
 (defvar tk/frame-transparency '(93 . 80))
-;; make-frame before/after hooks weren't getting the job done, so pulling out advice
+;;(set-frame-parameter frame 'alpha tk/frame-transparency)
 (defun tk/transparency ()
+  (interactive)
   (dolist (frame (frame-list))
     (set-frame-parameter frame 'alpha tk/frame-transparency)))
 (tk/transparency)
@@ -39,7 +41,7 @@
 (setq which-key-idle-delay .25)
 (super-save-mode 1)
 (setq super-save-auto-save-when-idle t
-      super-save-idle-duration 5
+      super-save-idle-duration 10
       auto-save-default nil)
 (setq super-save-hook-triggers (append super-save-hook-triggers '(doom-switch-window-hook)))
 ;; (setq warning-suppress-types '(yasnippet backquote-change))
@@ -51,12 +53,11 @@
   ;;telega-completing-read-function #'ivy-completing-read
   ;;telega-msg-rainbow-title nil
   telega-chat-fill-column 75)
-
+(setq company-idle-delay .5)
 (load! "hacks.el")
 (load! "org.el")
 (load! "programming.el")
 (load! "keymaps.el")
 (load! "org_templates.el")
 
-(tk/keys)
 (use-package! stumpwm-mode :defer-incrementally t)

@@ -58,3 +58,13 @@
       :n "W" #'+evil/next-frame
       :inom "C-w" #'tk/split-window-horizontally
       :inom "C-S-w" #'delete-other-windows)
+
+(map! :leader
+      (:prefix-map ("i" . "insert")
+       :desc "Insert Date"      "d" #'insert-date))
+
+(map! :map rustic-mode-map
+      :localleader
+      (:prefix ("b" . "build")
+       :desc "cargo add"      "a" #'+rust/cargo-add
+       :desc "cargo audit"   "A" #'+rust/cargo-audit))

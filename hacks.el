@@ -19,6 +19,7 @@
 
 (defun tk/keys () (interactive)
        (shell-command "setxkbmap dvorak -option ctrl:swapcaps"))
+(tk/keys)
 (defun tk/logout () (interactive)
        (if (y-or-n-p "log out? ")
        (shell-command "pkill -KILL -u $USERNAME")))
@@ -36,3 +37,8 @@
       (goto-char (point-max))
       (insert (format "(use-package! %s)" package))
       (write-file "~/.doom.d/config.el"))))
+(defun tk/windows ()
+  (interactive)
+  (org-journal-new-entry 1)
+  (org-agenda "a" "a")
+  (other-window 1))
