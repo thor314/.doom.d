@@ -3,7 +3,6 @@
 #+SINCE:   December 2, 2021
 #+STARTUP: inlineimages nofold
 
-* Description
 This is my doom config. To use it:
 #+begin_src shell
 cd
