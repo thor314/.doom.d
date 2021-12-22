@@ -24,8 +24,9 @@
 (tk/transparency)
 (advice-add 'make-frame :after #'tk/transparency)
 
-(setq ispell-personal-dictionary "~/.doom.d/.config/.pws")
-(setq abbrev-file-name "~/.doom.d/.config/.abbrev_defs.el")
+(setq ispell-personal-dictionary "~/.doom.d/.config/pws")
+(setq abbrev-file-name "~/.doom.d/.config/abbrev_defs.el")
+(setq +snippets-dir "~/.doom.d/.config/snippets")
 
 (line-number-mode 0) ; clutter mode line
 (column-number-mode 0)
