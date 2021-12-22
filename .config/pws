@@ -1,4 +1,4 @@
-personal_ws-1.1 en 178
+personal_ws-1.1 en 196
 Azul
 Becc
 Becca
@@ -19,6 +19,8 @@ Mina
 Morno
 NixOS
 Nyxt
+OpenSSH
+Satoshi
 Schnorr
 Todos
 Whatcha
@@ -32,6 +34,7 @@ and
 ansible
 arkworks
 backend
+backends
 backquote
 beancount
 bfast
@@ -39,6 +42,7 @@ biblio
 bitlbee
 blockchain
 blockchains
+boop
 browser
 cdot
 changelog
@@ -56,9 +60,11 @@ decomplexify
 defcommand
 defs
 defun
+desktopManager
 dev
 dired
 direnv
+displayManager
 doin
 dojo
 dojos
@@ -75,8 +81,10 @@ goin
 happenin
 hashbrown
 homomorphic
+hostname
 https
 ibuffer
+ignorable
 ij
 ingroup
 init
@@ -89,6 +97,7 @@ keymap
 keymaps
 kindof
 laserwave
+lightdm
 lil
 lispy
 lua
@@ -104,12 +113,15 @@ monospace
 multilinear
 neckbeards
 neotree
+networkmanager
 nim
+nocaps
 nonfree
 noob
 notational
 obstinance
 parinfer
+passwd
 pkill
 pls
 pre
@@ -139,11 +151,14 @@ sourcerer
 spacegrey
 spected
 src
+stateful
 stumpish
 stumpwm
 subdirectory
+sudo
 sumcheck
 swapcaps
+systemd
 t
 tased
 tasing
@@ -155,6 +170,7 @@ tk
 tmux
 todo
 toml
+touchpad
 treemacs
 tryna
 tty
@@ -175,5 +191,7 @@ workspaces
 wpa
 wronghood
 wrt
+xclip
+xserver
 xsetroot
 yasnippet

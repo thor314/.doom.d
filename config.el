@@ -6,7 +6,6 @@
 (setq user-full-name "Thor Kamphefner"
       user-mail-address "thorck@protonmail.com")
 
-(font-family-list)
 (if (member "Cantarell" (font-family-list))
     (setq doom-variable-pitch-font (font-spec :family "Cantarell" :size 14 :weight 'regular))
      (setq doom-variable-pitch-font (font-spec :family "Sans" :size 14 :weight 'regular)))
@@ -59,6 +58,11 @@
 ;; (setq warning-suppress-types '(yasnippet backquote-change))
 (use-package telega
   :commands (telega))
+
+;; 2021-12-22 not able to get company completes in popup buffer
+;; (add-to-list 'company-backends 'company-nixos-options)
+;; (add-hook! 'nix-mode-hook #'company-mode)
+
 (setq telega-user-use-avatars nil
   telega-use-tracking-for '(any pin unread)
   telega-emoji-use-images t
