@@ -45,9 +45,18 @@
       :nm "] SPC" #'tk/insert-space-ahead
       :nm "] d" #'tk/delete-next-line
       :nm "[ d" #'tk/delete-previous-line
-      :nm "C-e" #'doom/forward-to-last-non-comment-or-eol
-      :nm "U" #'evil-redo
-      ;; C-i and M-i next
+      :nim "C-e" #'doom/forward-to-last-non-comment-or-eol
+      :nm "U" #'evil-redo ;; unbound, make it useful
+      :nim "C-u" #'evil-undo ;; insert mode should have a natural undo
+      :nim "C-M-u" #'evil-redo
+      ;; C-i and M-i: insert stuff? not sure yet
+      :nim "C-d" #'evil-delete-char
+      ;; :nm "H" #'
+      ;; t: workspace commands
+      :nim "C-n" #'evil-next-line ; pop paste is silly here
+      :nim "M-n" #'next-error ; trying these two out; moved insert paste to C/M-v
+      :nim "M-p" #'previous-error
+      :nim "C-s" #'+default/search-buffer ;; trying this out, may replace with avy
       :nm "_" #'tk/prev-end-line
       :nm "0" #'evil-next-line-1-first-non-blank
       :nom "s" #'evil-avy-goto-char
