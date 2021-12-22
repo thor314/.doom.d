@@ -63,7 +63,13 @@
       "E" #'project-eshell
       "q C-l" #'tk/logout
       "1" #'tk/keys
-      (:prefix-map ("i" . "insert")
+      (:prefix "f"
+       :desc "Get NixOS conf" "n" #'tk/nix-config-file)
+      (:prefix "h"
+       (:prefix "d"
+        "k" #'tk/keymaps)
+        "h" #'tk/hacks)
+      (:prefix "i"
        :desc "Insert Date"      "d" #'insert-date))
 
 (map! :map rustic-mode-map
@@ -71,3 +77,9 @@
       (:prefix ("b" . "build")
        :desc "cargo add"      "a" #'+rust/cargo-add
        :desc "cargo audit"   "A" #'+rust/cargo-audit))
+
+(map! :leader
+      (:prefix "h"
+       (:prefix "d"
+        :desc "open my keymaps" "k" #'tk/keymaps
+        :desc "open my hacks" "h" #'tk/hacks)))
