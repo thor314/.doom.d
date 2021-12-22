@@ -57,3 +57,28 @@
   (find-file "~/.doom.d/keymaps.el")
   (goto-char (point-max))
   (recenter))
+(defun tk/insert-space-behind (count)
+  (interactive "p")
+  (save-excursion
+    (forward-char (+ 1 (- count)))
+    (insert-char #x20)))
+(defun tk/insert-space-ahead (count)
+  (interactive "p")
+  (save-excursion
+    (forward-char count)
+    (insert-char #x20)))
+(defun tk/delete-previous-line (count)
+  (interactive "p")
+  (save-excursion
+    (forward-line (- count))
+    (kill-line count)))
+(defun tk/delete-next-line (count)
+  (interactive "p")
+  (save-excursion
+    (forward-line)
+    (kill-line count)))
+(defun tk/insert-space-ahead (count)
+  (interactive "p")
+  (save-excursion
+    (forward-char count)
+    (insert-char #x20)))

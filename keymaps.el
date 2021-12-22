@@ -41,6 +41,10 @@
 ;; evil will screw with ya, we must screw back
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
 (map! :after evil
+      :desc "insert space" :nm "[ SPC" #'tk/insert-space-behind
+      :nm "] SPC" #'tk/insert-space-ahead
+      :nm "] d" #'tk/delete-next-line
+      :nm "[ d" #'tk/delete-previous-line
       :nm "C-e" #'doom/forward-to-last-non-comment-or-eol
       :nm "U" #'evil-redo
       ;; C-i and M-i next
