@@ -1,18 +1,27 @@
-;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 ;; - `after!' for running code after a package has loaded
 ;; - `add-load-path!' for adding directories to the `load-path', relative to
 ;;   this file. Emacs searches the `load-path' when you load packages with
 ;;   `require' or `use-package'.
 (setq user-full-name "Thor Kamphefner"
       user-mail-address "thorck@protonmail.com")
+
+(font-family-list)
+(if (member "Cantarell" (font-family-list))
+    (setq doom-variable-pitch-font (font-spec :family "Cantarell" :size 14 :weight 'regular))
+     (setq doom-variable-pitch-font (font-spec :family "Sans" :size 14 :weight 'regular)))
+(if (member "Fira Code" (font-family-list))
+    (progn
+      (setq doom-font (font-spec :family "Fira Code" :size 13 :weight 'regular))
+      (setq doom-big-font (font-spec :family "Fira Code" :size 16)))
+  (setq doom-font (font-spec :family "DejaVu Sans Mono" :size 14 :weight 'regular)))
+;; outrun-electric, sourcerer, and rouge, laserwave, spacegrey, moonlight are faves
+(setq doom-theme 'doom-outrun-electric)
+
 ;; GNOME intercepts M-SPC so change this
 (setq doom-leader-alt-key "C-'"
       doom-localleader-alt-key "C-' m")
-(setq doom-variable-pitch-font (font-spec :family "Cantarell" :size 14 :weight 'regular))
-(setq doom-big-font (font-spec :family "Fira Code" :size 16))
-(setq doom-font (font-spec :family "Fira Code" :size 14 :weight 'regular))
-;; outrun-electric, sourcerer, and rouge, laserwave, spacegrey, moonlight are faves
-(setq doom-theme 'doom-outrun-electric)
+
 (setq doom-modeline-enable-word-count t)
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 (defvar tk/frame-transparency '(93 . 80))

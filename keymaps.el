@@ -41,10 +41,9 @@
 ;; evil will screw with ya, we must screw back
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
 (map! :after evil
-      :n "SPC e" #'eshell
-      :n "SPC E" #'project-eshell
-      :n "SPC q C-l" #'tk/logout
-      :n "SPC 1" #'tk/keys
+      :nm "C-e" #'doom/forward-to-last-non-comment-or-eol
+      :nm "U" #'evil-redo
+      ;; C-i and M-i next
       :nm "_" #'tk/prev-end-line
       :nm "0" #'evil-next-line-1-first-non-blank
       :nom "s" #'evil-avy-goto-char
@@ -60,6 +59,10 @@
       :inom "C-S-w" #'delete-other-windows)
 
 (map! :leader
+      "e" #'eshell
+      "E" #'project-eshell
+      "q C-l" #'tk/logout
+      "1" #'tk/keys
       (:prefix-map ("i" . "insert")
        :desc "Insert Date"      "d" #'insert-date))
 

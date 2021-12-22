@@ -42,3 +42,8 @@
   (org-journal-new-entry 1)
   (org-agenda "a" "a")
   (other-window 1))
+(defun tk/nix-config-file ()
+  (interactive)
+  (doom/sudo-find-file "/etc/nixos/configuration.nix")
+  (evil-goto-line 50)
+  (recenter))
