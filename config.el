@@ -15,7 +15,6 @@
 (setq doom-theme 'doom-outrun-electric)
 (setq doom-modeline-enable-word-count t)
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
-
 (defvar tk/frame-transparency '(93 . 80))
 ;;(set-frame-parameter frame 'alpha tk/frame-transparency)
 (defun tk/transparency ()
@@ -24,6 +23,9 @@
     (set-frame-parameter frame 'alpha tk/frame-transparency)))
 (tk/transparency)
 (advice-add 'make-frame :after #'tk/transparency)
+
+(setq ispell-personal-dictionary "~/.doom.d/.config/.pws")
+(setq abbrev-file-name "~/.doom.d/.config/.abbrev_defs.el")
 
 (line-number-mode 0) ; clutter mode line
 (column-number-mode 0)
