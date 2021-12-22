@@ -3,3 +3,4 @@
 *.log
 tmp/
 images
+custom.el
