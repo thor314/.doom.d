@@ -11,7 +11,7 @@
      (setq doom-variable-pitch-font (font-spec :family "Sans" :size 14 :weight 'regular)))
 (if (member "Fira Code" (font-family-list))
     (progn
-      (setq doom-font (font-spec :family "Fira Code" :size 13 :weight 'regular))
+      (setq doom-font (font-spec :family "Fira Code" :size 14 :weight 'regular))
       (setq doom-big-font (font-spec :family "Fira Code" :size 16)))
   (setq doom-font (font-spec :family "DejaVu Sans Mono" :size 14 :weight 'regular)))
 ;; outrun-electric, sourcerer, and rouge, laserwave, spacegrey, moonlight are faves
@@ -23,15 +23,20 @@
 
 (setq doom-modeline-enable-word-count t)
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
-(defvar tk/frame-transparency '(93 . 80))
-;;(set-frame-parameter frame 'alpha tk/frame-transparency)
-(defun tk/transparency ()
-  (interactive)
+(defvar tk/frame-transparency '(91 . 75))
+(set-frame-parameter (selected-frame) 'alpha tk/frame-transparency)
+(defadvice! tk/transparency ()
+  :after '(make-frame make-frame-on-display)
   (dolist (frame (frame-list))
     (set-frame-parameter frame 'alpha tk/frame-transparency)))
-(tk/transparency)
-(advice-add 'make-frame :after #'tk/transparency)
 
+(global-subword-mode 1)
+(setq scroll-margin 5) ; where the bottom starts
+(unless (string-match-p "^Power N/A" (battery))   ; On laptops...
+  (display-battery-mode 1))     ; it's nice to know how much power you have
+(setq evil-want-fine-undo t) ; More granular undos
+
+;; preserve these across machines
 (setq ispell-personal-dictionary "~/.doom.d/.config/pws")
 (setq abbrev-file-name "~/.doom.d/.config/abbrev_defs.el")
 (setq +snippets-dir "~/.doom.d/.config/snippets")

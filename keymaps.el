@@ -46,13 +46,14 @@
       :nm "] d" #'tk/delete-next-line
       :nm "[ d" #'tk/delete-previous-line
       :nim "C-e" #'doom/forward-to-last-non-comment-or-eol
+      :nm "u" #'evil-undo
       :nm "U" #'evil-redo ;; unbound, make it useful
       :nim "C-u" #'evil-undo ;; insert mode should have a natural undo
       :nim "C-M-u" #'evil-redo
-      ;; C-i and M-i: insert stuff? not sure yet
+      ;; C-i and M-i: insert stuff? not sure yet what better, but this is lame
       :nim "C-d" #'evil-delete-char
       ;; :nm "H" #'
-      ;; t: workspace commands
+      ;; :nm "L" #'
       :nim "C-n" #'evil-next-line ; pop paste is silly here
       :nim "M-n" #'next-error ; trying these two out; moved insert paste to C/M-v
       :nim "M-p" #'previous-error
@@ -66,6 +67,7 @@
       ;; :nom "<" #'
       :n "t" #'transpose-chars
       :n "T" #'transpose-sexps
+      :nim "C-t" #'transpose-chars
       :n "w" #'evil-window-next
       :n "W" #'+evil/next-frame
       :inom "C-w" #'tk/split-window-horizontally
@@ -96,3 +98,7 @@
        (:prefix "d"
         :desc "open my keymaps" "k" #'tk/keymaps
         :desc "open my hacks" "h" #'tk/hacks)))
+
+;; BUG: 'g' does not refresh the magit buffer
+(map! :map magit-mode-map
+      :nm "g"  #'magit-refresh-buffer)
