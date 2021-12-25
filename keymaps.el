@@ -77,7 +77,9 @@
       "e" #'eshell
       "E" #'project-eshell
       "q C-l" #'tk/logout
-      "1" #'tk/keys
+      "0 0" #'tk/aoeu
+      "0 8" #'tk/caps_arghh
+      "0 9" #'tk/asdf
       (:prefix "f"
        :desc "Get NixOS conf" "n" #'tk/nix-config-file)
       (:prefix "h"
