@@ -1,4 +1,4 @@
-personal_ws-1.1 en 198
+personal_ws-1.1 en 209
 Azul
 Becc
 Becca
@@ -15,13 +15,17 @@ Indistinguishability
 Jupyter
 Kamphefner
 Lol
+Matic
 Mina
 Morno
 NixOS
 Nyxt
 OpenSSH
+Reconfiguring
 Satoshi
 Schnorr
+Seisembra
+Starcheeks
 Todos
 Whatcha
 Woah
@@ -74,11 +78,14 @@ editorconfig
 edu
 el
 elisp
+env
 eval
 fn
+futuro
 gists
 gmail
 goin
+hangin
 happenin
 hashbrown
 homomorphic
@@ -92,6 +99,7 @@ init
 ith
 journaling
 json
+judgement
 kbd
 keybinds
 keymap
@@ -114,6 +122,7 @@ monospace
 multilinear
 neckbeards
 neotree
+ness
 networkmanager
 nim
 nocaps
@@ -131,6 +140,7 @@ prover
 provisioner
 ptr
 purescript
+qualia
 readin
 reframe
 repl
@@ -183,6 +193,7 @@ underperform
 undos
 unnarrowed
 usize
+usr
 verifier
 very
 vibed

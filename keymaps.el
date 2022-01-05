@@ -51,7 +51,6 @@
       :nim "C-u" #'evil-undo ;; insert mode should have a natural undo
       :nim "C-M-u" #'evil-redo
       ;; C-i and M-i: insert stuff? not sure yet what better, but this is lame
-      :nim "C-d" #'evil-delete-char
       ;; :nm "H" #'
       ;; :nm "L" #'
       :nim "C-n" #'evil-next-line ; pop paste is silly here
@@ -104,3 +103,13 @@
 ;; BUG: 'g' does not refresh the magit buffer
 (map! :map magit-mode-map
       :nm "g"  #'magit-refresh-buffer)
+
+
+(map! :map inferior-python-mode-map
+      ;; less annoying than insert-mode dancing.
+      :nim "RET" #'comint-send-input)
+
+;; (undefine-key! evil-org-mode-map "C-d")
+(map! :map evil-org-mode-map
+      :nim "C-d" #'evil-delete-char
+      )

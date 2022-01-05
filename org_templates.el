@@ -99,7 +99,7 @@
          :unnarrowed t)
        ("q" "quarter review" plain "%?"
          :if-new (file+head "review/quarter/%<%Y-%m-%d>-quarter_review.org"
-                   "#+title: Quarter Review %<%Y-%m-%d> \n#+filetags: :quarter_review:\n* Quarter In Review\n** Big vibes\n** Free Write\n** Theme for Quarter:\n** Review of Predictions \n** PPRESH check-in\n*** Professional - \n*** Projects - \n*** Romantic - \n*** Emotional - \n*** Social - \n*** Phys Health - \n*** Attn Health - \n** Review of Crypto Finances\n\nPeople https://docs.google.com/spreadsheets/d/17u74o6Z5y6o8YGpMzJ4YLM3dF01WkwoUYblAS8wHqoM/edit?usp=drive_web&ouid=115883971599314555687 ")
+                   "#+title: Quarter Review %<%Y-%m-%d> \n#+filetags: :quarter_review:\n* Quarter In Review\n** Big vibes\n** Free Write\n** Theme for Quarter:\n** Review of Predictions \n** PPRESH check-in\n*** Professional - \n*** Projects - \n*** Romantic - \n*** Emotional - \n*** Social - \n*** Phys Health - \n*** Attn Health - \n** Review of Crypto Finances\n\n** People")
          :unnarrowed t)
        ("y" "year review" plain "%?"
          :if-new (file+head "review/year/%<%Y-%m-%d>-year_review.org"
